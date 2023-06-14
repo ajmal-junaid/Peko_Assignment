@@ -27,7 +27,10 @@ import fourthrow2 from "../assets/fourthrow2.png";
 import fourthrow3 from "../assets/fourthrow3.png";
 import fourthrow4 from "../assets/fourthrow4.png";
 import ThirdPartyBanner from "../components/Home/ThirdPartyBanner";
-
+import list5 from '../assets/listbottom1.png';
+import list6 from '../assets/listbottom2.png';
+import list7 from '../assets/listbottom3.png';
+import Footer from "../components/Footer/Footer";
 const Home = () => {
   const titles = [
     "Recharge & Bill Payments",
@@ -49,12 +52,18 @@ const Home = () => {
     "App only offers",
     "Safe and Secure",
     "Faster and Smoother",
+    "Cashback & Offers",
+    "Become a Merchant",
+    "24x7 Customer care"
   ];
   const listSubTitles = [
     "Make payments at nearby shops",
     "View your personalized offers, scratchcards and points",
     "At Paytm your trust is foremost, your money is yours until you get what you paid for",
     "Make the most of the enriched in-app experience",
+    "View your scratchcards, points & other offers",
+    "Accept payments with Paytm's Payment Gateway, Payment Links, QR & much more",
+    "Get quick resolution on queries related to Paytm"
   ];
   return (
     <>
@@ -120,6 +129,12 @@ const Home = () => {
         button={true}
       />
       <ThirdPartyBanner/>
+     <div className="m-5 mb-20">
+     <List image={list5} title={listTitles[4]} subtitle={listSubTitles[4]} />
+      <List image={list6} title={listTitles[5]} subtitle={listSubTitles[5]} />
+      <List image={list7} title={listTitles[6]} subtitle={listSubTitles[6]} />
+     </div>
+     <Footer/>
     </>
   );
 };
