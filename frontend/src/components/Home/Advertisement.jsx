@@ -2,7 +2,7 @@ import left from "../../assets/leftside.png";
 import right from "../../assets/rightside.png";
 const Advertisement = () => {
   return (
-    <div className="h-67 w-full flex justify-around items-center bg-blue-900 h-16">
+    <div className="h-67 w-full flex justify-around items-center bg-dark-blue h-16">
       <div className="flex items-center">
         <img src={left} alt="Image" className="w-8 h-8 mr-2" />
         <div className="flex flex-col text-white ml-2">

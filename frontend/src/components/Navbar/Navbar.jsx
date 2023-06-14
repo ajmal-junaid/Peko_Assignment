@@ -8,7 +8,7 @@ const Navbar = () => {
           <img src={Logo} className="h-12 mr-3" alt="Logo" />
         </a>
         <div className="flex items-center md:order-2">
-          <button className="flex items-center bg-blue-400 text-white  rounded-full hover:bg-blue-600">
+          <button className="flex items-center bg-light-blue text-white  rounded-full hover:bg-blue-600">
             <span className="mr-2 pl-4 font-extrabold">Sign In</span>
             <img src={UserImg} alt="User" className="w-8 h-8 object-fill p-1" />
           </button>
