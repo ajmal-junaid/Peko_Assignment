@@ -2,8 +2,8 @@ const mongoose = require('mongoose')
 const connection = require('../utils/database')
 
 const userSchema = new mongoose.Schema({
-    name:{
-        type:String,
+    name: {
+        type: String,
     },
     mobile: {
         type: String,
@@ -18,9 +18,13 @@ const userSchema = new mongoose.Schema({
         type: Number,
         default: null
     },
+    secret: {
+        type: String,
+        default: null
+    },
     email: {
         type: String,
-        required:true
+        required: true
     },
     wrongAttempt: {
         type: Number,

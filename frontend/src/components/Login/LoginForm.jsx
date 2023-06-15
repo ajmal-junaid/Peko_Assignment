@@ -51,7 +51,7 @@ function LoginForm() {
                       : "-top-5 text-light-blue text-xs"
                   } left-2  transition-all duration-200 absolute text-sm pointer-events-none`}
                 >
-                  Mobile Number
+                  E-mail
                 </label>
               </div>
 
@@ -72,7 +72,7 @@ function LoginForm() {
                     !isPasswordFocused
                       ? "top-2 text-gray-300"
                       : "-top-5 text-light-blue text-xs"
-                  } left-2 text-gray-500 transition-all duration-200 absolute text-sm pointer-events-none`}
+                  } left-2 text-gray-300 transition-all duration-200 absolute text-sm pointer-events-none`}
                 >
                   Password
                 </label>

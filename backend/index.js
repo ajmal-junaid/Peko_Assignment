@@ -1,6 +1,7 @@
 const express = require('express')
 const cors = require('cors')
 const morgan = require('morgan');
+const cookieParser = require('cookie-parser');
 const app = express();
 const http = require('http')
 const server = http.createServer(app);
@@ -10,6 +11,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use(morgan('combined'));
+app.use(cookieParser());
 const dbConnection = require('./utils/database')
 const { initializeSocket } = require('./utils/socket');
 const userRoutes = require('./routes/user')
@@ -32,4 +34,4 @@ dbConnection.once('open', () => {
         if (error) console.log(error, "connection failed")
         console.log(`server is running on Port ${PORT}`);
     });
-  });
+});

@@ -3,7 +3,8 @@ const { Server } = require('socket.io')
 function initializeSocket(server) {
     const io = new Server(server, {
         cors: {
-            origin: ['https://eaglone.online', 'https://www.eaglone.online'],
+            //origin: ['https://eaglone.online', 'https://www.eaglone.online'],
+            origin:'*'
         },
     })
     io.on('connection', (socket) => {
