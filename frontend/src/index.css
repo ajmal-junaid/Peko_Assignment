@@ -3,5 +3,14 @@
 @tailwind utilities;
 
 ::-webkit-scrollbar {
-    display: none;
-  }
+  display: none;
+}
+::placeholder,
+::-webkit-input-placeholder {
+  opacity: 0.5; /* Adjust the opacity value as needed */
+}
+
+:focus::placeholder,
+#password:focus::-webkit-input-placeholder {
+  opacity: 0;
+}

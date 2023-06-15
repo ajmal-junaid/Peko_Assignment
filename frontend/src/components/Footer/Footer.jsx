@@ -4,7 +4,7 @@ const Footer = () => {
     <div className="flex items-center bg-blue-50 fixed bottom-0 left-0 right-0 z-10 h-14 md:h-16 md:px-10 md:py-2">
       <div className="flex items-center w-1/2 px-4 md:px-10 py-2">
         <img src={logo} alt="Image" className="h-8 w-8 md:h-10 md:w-10" />
-        <div className="ml-2 md:ml-4">
+        <div className="ml-2 md:ml-4">  
           <h2 className="text-gray-600 font-extrabold text-sm md:text-base">
             Download the App
           </h2>
