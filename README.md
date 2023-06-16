@@ -40,8 +40,6 @@ JWT\_SECRET: The secret key for JSON Web Token (JWT) encryption and decryption.
 
 
 
-
-
 ## Installation
 
 Install paytm clone with npm
@@ -54,10 +52,56 @@ cd Peko_Assignment
     npm install
 ```
     
-# Paytm Clone
+## Run Locally
 
-This project is a clone of the Paytm application, featuring a user-friendly app that allows seamless fund transfers between users. The app is designed to provide a wallet-based system similar to Paytm, ensuring a secure and convenient payment experience.
+Clone the project
 
-# Paytm Clone
+```bash
+  git clone https://github.com/ajmal-junaid/Peko_Assignment.git
+```
 
-This project is a clone of the Paytm application, featuring a user-friendly app that allows seamless fund transfers between users. The app is designed to provide a wallet-based system similar to Paytm, ensuring a secure and convenient payment experience.
+Go to the project frontend directory
+
+```bash
+  cd Peko_Assignment
+    cd frontend
+```
+
+Install dependencies
+
+```bash
+  npm install
+```
+
+Start the server
+
+```bash
+  npm run dev
+```
+
+
+Go to the project backend directory
+
+```bash
+  cd Peko_Assignment
+    cd backend
+```
+
+Install dependencies
+
+```bash
+  npm install
+```
+
+setup .env
+
+```bash
+  PORT, MONGO_URI_PAYTM, YOUR_EMAIL, YOUR_PASSWORD, YOUR_PASSWORD, JWT_SECRET
+```
+
+
+Start the server
+
+```bash
+  npm start
+```
