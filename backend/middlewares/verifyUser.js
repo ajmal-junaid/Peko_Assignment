@@ -16,6 +16,7 @@ module.exports = {
                         }
                     } else {
                         req.token = decoded._id;
+                        req.mobile = decoded.mobile;
                         next()
                     }
                 })

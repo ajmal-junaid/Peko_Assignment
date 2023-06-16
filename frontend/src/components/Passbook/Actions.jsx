@@ -1,7 +1,8 @@
+import PropTypes from "prop-types";
 import { useState } from "react";
 import Modal from "../Modal/SendRequest";
 
-const Actions = () => {
+const Actions = ({socket ,transactions,setTransactions,setBalance}) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalOpenReq, setIsModalOpenReq] = useState(false);
 
@@ -21,8 +22,8 @@ const Actions = () => {
   };
   return (
     <>
-      {isModalOpen && <Modal closeModal={closeModal} IsReq={false} />}
-      {isModalOpenReq && <Modal closeModal={closeModalReq} IsReq={true} />}
+      {isModalOpen && <Modal closeModal={closeModal} IsReq={false} socket={socket} transactions={transactions} setTransactions={setTransactions} setBalance={setBalance} />}
+      {isModalOpenReq && <Modal closeModal={closeModalReq} IsReq={true} socket={socket}/>}
       <div className="fixed bottom-4 left-4">
         <button
           onClick={openModal}
@@ -71,5 +72,11 @@ const Actions = () => {
     </>
   );
 };
+Actions.propTypes={
+  socket: PropTypes.object,
+  setTransactions:PropTypes.func,
+  transactions:PropTypes.array,
+  setBalance:PropTypes.func
+}
 
 export default Actions;

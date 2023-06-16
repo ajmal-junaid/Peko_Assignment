@@ -2,23 +2,27 @@ const mongoose = require('mongoose')
 const connection = require('../utils/database')
 
 const transactionSchema = new mongoose.Schema({
-    person: {
+    from: {
         type: String,
-        required: true
+
+    },
+    receiverMobile: {
+        type: String,
+
     },
     type: {
         type: String,
-        required: true
+
     },
     amount: {
         type: Number,
-        required: true
+
     },
     description: {
         type: String,
-        required: false
+
     },
-    status: {
+    timestamp: {
         type: String,
     },
 },
@@ -27,15 +31,15 @@ const transactionSchema = new mongoose.Schema({
     })
 
 const transactionsSchema = new mongoose.Schema({
-    user:{
-        type:String,
-        required:true
+    user: {
+        type: String,
+        required: true
     },
-    transactions:{
-        type:[transactionSchema],
-        capped:1048576,
+    transactions: {
+        type: [transactionSchema],
+        capped: 1048576,
     }
 })
 
-const Transaction = connection.model('Transaction',transactionsSchema)
-module.exports=Transaction;
+const Transaction = connection.model('Transaction', transactionsSchema)
+module.exports = Transaction;

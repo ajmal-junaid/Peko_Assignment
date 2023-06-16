@@ -1,8 +1,25 @@
 import Logo from "../../assets/paytm_logo.png";
 import UserImg from "../../assets/loginImg.svg";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import Cookies from "js-cookie";
+import jwt_decode from "jwt-decode";
+
 const Navbar = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const [name, setName] = useState("");
+
+  useEffect(() => {
+    const token = Cookies.get("token");
+    if (token) {
+      const user = jwt_decode(token);
+      setName(user.name);
+    }
+  }, []);
+  const handleLogout = () => {
+    Cookies.remove("token");
+    navigate("/login");
+  };
   return (
     <nav className="bg-white border-gray-200 h-24 drop-shadow-lg fixed top-0 left-0 right-0 z-10">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 h-full">
@@ -10,8 +27,13 @@ const Navbar = () => {
           <img src={Logo} className="h-12 mr-3" alt="Logo" />
         </a>
         <div className="flex items-center md:order-2">
-          <button onClick={()=>navigate('/login')} className="flex items-center bg-light-blue text-white  rounded-full hover:bg-blue-600">
-            <span className="mr-2 pl-4 font-extrabold">Sign In</span>
+          <button
+            onClick={() => (name ? handleLogout() : navigate("/login"))}
+            className="flex items-center bg-light-blue text-white  rounded-full hover:bg-blue-600"
+          >
+            <span className="mr-2 pl-4 font-extrabold">
+              {name ? name : "Sign In"}
+            </span>
             <img src={UserImg} alt="User" className="w-8 h-8 object-fill p-1" />
           </button>
 

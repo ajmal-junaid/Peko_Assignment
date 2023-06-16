@@ -6,6 +6,7 @@ const Signup = () => {
   return (
     <>
       <Navbar />
+     
       <Banner />
       <SignupForm/>
     </>

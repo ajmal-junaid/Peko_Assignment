@@ -1,7 +1,12 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
+import Cookies from "js-cookie";
+import jwt_decode from "jwt-decode";
+import showToast from "./Toast";
 
-function Modal({ closeModal, IsReq }) {
+function Modal({ closeModal, IsReq, socket }) {
+  const token = Cookies.get("token");
+  const [id, setId] = useState(jwt_decode(token).mobile);
   const [receiverMobile, setReceiverMobile] = useState("");
   const [amount, setAmount] = useState("");
   const [description, setDescription] = useState("");
@@ -9,16 +14,31 @@ function Modal({ closeModal, IsReq }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setId(id);
     setShowConfirmation(true);
-    // Handle form submission here
-    // You can access the values of receiverMobile, amount, and description
   };
 
-  const handleConfirm = () => {
-    // Perform the actual action here
-    // You can access the values of receiverMobile, amount, and description
-    // Close the modal
-    closeModal();
+  const handleConfirm = async () => {
+    const timestamp = new Date().toLocaleTimeString([], {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+    const transaction = {
+      from: id,
+      receiverMobile,
+      amount,
+      description,
+      timestamp,
+    };
+    await socket.emit("send_money", transaction, (acknowledgement) => {
+      if (acknowledgement.success) {
+        closeModal();
+        showToast(acknowledgement.message, 4000, "success");
+      } else {
+        closeModal();
+        showToast(acknowledgement.message, 4000, "failure");
+      }
+    });
   };
   const handleCancel = () => {
     setShowConfirmation(false);
@@ -118,5 +138,6 @@ function Modal({ closeModal, IsReq }) {
 Modal.propTypes = {
   closeModal: PropTypes.func,
   IsReq: PropTypes.bool,
+  socket: PropTypes.object,
 };
 export default Modal;

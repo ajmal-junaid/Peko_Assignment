@@ -1,4 +1,5 @@
 const User = require("../models/user")
+const Transaction = require('../models/transactions')
 const bcrypt = require('bcrypt')
 const validator = require('validator')
 const speakeasy = require('speakeasy');
@@ -40,7 +41,12 @@ module.exports = {
             }
 
             req.body.password = await bcrypt.hash(req.body.password, 11);
-            await User.create(req.body);
+            const user = await User.create(req.body);
+            const newTransaction = new Transaction({
+                user: user.mobile,
+                transactions: [],
+            });
+            await newTransaction.save();
             return res.status(201).json({ message: 'Created successfully' });
         } catch (error) {
             console.log(error);
@@ -48,8 +54,6 @@ module.exports = {
         }
     },
     userLogin: async (req, res) => {
-        console.log(req.body);
-
         try {
 
             const { email, password } = req.body;
@@ -84,7 +88,7 @@ module.exports = {
                             console.error('Error generating QR code:', err);
                             return res.status(400).json({ message: "Error generating qr code" })
                         } else {
-                            return res.status(201).json({ message: 'Login successfull', data: dataUrl });
+                            return res.status(201).json({ message: 'OTP Sended', data: dataUrl });
                         }
                     });
                 } else {
@@ -102,15 +106,15 @@ module.exports = {
     },
     verifyLogin: async (req, res) => {
         try {
-            const { mobile, otp } = req.body;
-            const user = await User.findOne({ mobile });
+            const { email, otp } = req.body;
+            const user = await User.findOne({ email });
 
             if (!user) {
                 return res.status(404).json({ message: 'User not found' });
             }
 
             if (otp.length == 4 && otp != user.otp) {
-                return res.status(401).json({ message: 'Invalid OTP' });
+                return res.status(403).json({ message: 'Invalid OTP' });
             }
 
             if (otp != user.otp) {
@@ -121,7 +125,7 @@ module.exports = {
                 });
 
                 if (!verificationResult) {
-                    return res.status(401).json({ message: 'Invalid TOTP' });
+                    return res.status(403).json({ message: 'Invalid TOTP' });
                 }
             }
             Jwt.sign(
@@ -139,7 +143,7 @@ module.exports = {
                             .status(403)
                             .json({ err: true, message: 'error in token generation' })
                     if (token)
-                        res.cookie('token', token, { httpOnly: true });
+                        res.cookie('token', token, { httpOnly: false });
                     return res.status(200).json({
                         message: 'Email verified successfully',
                     })

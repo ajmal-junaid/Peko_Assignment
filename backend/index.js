@@ -9,7 +9,10 @@ require('dotenv').config();
 const PORT = process.env.PORT
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
+app.use(cors({
+    origin: 'http://localhost:5173',
+    credentials: true,
+  }));
 app.use(morgan('combined'));
 app.use(cookieParser());
 const dbConnection = require('./utils/database')
