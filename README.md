@@ -105,3 +105,24 @@ Start the server
 ```bash
   npm start
 ```
+
+
+## Screenshots
+
+![App Screenshot](https://res.cloudinary.com/dbyvfosqi/image/upload/v1686979351/paytmclone1_rshbrf.png)
+
+![App Screenshot](https://res.cloudinary.com/dbyvfosqi/image/upload/v1686979351/paytmclone2_khpcue.png)
+
+![App Screenshot](https://res.cloudinary.com/dbyvfosqi/image/upload/v1686979354/paytmclone3_aimk9v.png)
+
+![App Screenshot](https://res.cloudinary.com/dbyvfosqi/image/upload/v1686979351/paytmclone7_k4ugsk.png)
+
+![App Screenshot](https://res.cloudinary.com/dbyvfosqi/image/upload/v1686979350/paytmclone8_xmy9vt.png)
+
+![App Screenshot](https://res.cloudinary.com/dbyvfosqi/image/upload/v1686979350/paytmclone9_tjxzrk.png)
+
+![App Screenshot](https://res.cloudinary.com/dbyvfosqi/image/upload/v1686979351/paytmclone4_gqugxb.png)
+
+![App Screenshot](https://res.cloudinary.com/dbyvfosqi/image/upload/v1686979351/paytmclone5_osdslh.png)
+
+![App Screenshot](https://res.cloudinary.com/dbyvfosqi/image/upload/v1686979351/paytmclone6_tablg6.png)
